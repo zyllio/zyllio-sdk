@@ -1,0 +1,65 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>Zyllio SDK</title><meta name="description" content="Documentation for Zyllio SDK"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">Zyllio SDK</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1> Zyllio SDK</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#zyllio-sdk" id="zyllio-sdk" style="color: inherit; text-decoration: none;">
+  <h1>ZYLLIO SDK</h1>
+</a>
+<p>Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating  Plugins. These plugins define Components, Actions and Themes</p>
+<p>It is the decision of developer to define the granularity of a plugin, it may contain any number of Components, Actions and Themes altogether </p>
+
+<a href="#development-environment" id="development-environment" style="color: inherit; text-decoration: none;">
+  <h2>Development environment</h2>
+</a>
+<p>Zyllio SDK requires Node.js 14+ installed on any operating system it runs</p>
+<p>Zyllio team recommends development tools that support Javascript, Typescript technical stack</p>
+<p>These following tools are recommended: <a href="https://code.visualstudio.com/" target="_blank">VS Code</a> and <a href="https://www.jetbrains.com/" target="_blank">WebStorm</a> </p>
+
+<a href="#install-zyllio-sdk" id="install-zyllio-sdk" style="color: inherit; text-decoration: none;">
+  <h2>Install Zyllio SDK</h2>
+</a>
+<p>To install Zyllio SDK run the command</p>
+<p><code>npm install @zyllio/zy-sdk -save-dev</code> </p>
+
+<a href="#use-zyllio-sdk" id="use-zyllio-sdk" style="color: inherit; text-decoration: none;">
+  <h2>Use Zyllio SDK</h2>
+</a>
+<p>Zyllio SDK is a Typescript Library meant to be consumed from a Typescript project. Using Typescript is the recommended approach even though it is not mandatory</p>
+<p>To use Zyllio SDK, add this statement at the top of your index file</p>
+<p><code>/// &lt;reference types=&quot;@zyllio/zy-sdk&quot; /&gt;</code></p>
+<p>This statement allows the development tool to understand the services exposed by Zyllio SDK and thus provide completion and inline documentation</p>
+<blockquote>
+<p>Warning: Zyllio SDK does not need to be imported using ES6 Imports. If so, it would likely introduce instabilities and loss of data onmobile devices </p>
+</blockquote>
+
+<a href="#reference-api" id="reference-api" style="color: inherit; text-decoration: none;">
+  <h2>Reference API</h2>
+</a>
+<p>All services are available from the zySdk.services namespace. For instance, dictionary service is accessed through </p>
+<p><code>zySdk.services.dictionary</code></p>
+
+<a href="#reference-api-for-components" id="reference-api-for-components" style="color: inherit; text-decoration: none;">
+  <h3>Reference API for Components</h3>
+</a>
+<p>UI Component should implment a WebComponent (customElement) with ShadowDOM</p>
+<p>Register a component: Registry</p>
+<p>Read and Write data at runtime, Monitor data changes : Dictionary</p>
+<p>Read / Update / Create / Delete to/from Zyllio database: Storage</p>
+<p>Read and Write properties: Factory</p>
+<p>Display a message: Dialog</p>
+<p>Show Loading icon : Loading</p>
+<p>Deal with runtime: Runtime  </p>
+
+<a href="#reference-api-for-actions" id="reference-api-for-actions" style="color: inherit; text-decoration: none;">
+  <h3>Reference API for Actions</h3>
+</a>
+<p>Action extend ActionInterface and implement the execute method</p>
+<p>Read and Write data at runtime : Dictionary</p>
+<p>Read / Update / Create / Delete to/from Zyllio database: Storage</p>
+<p>Register an action: Registry</p>
+<p>Display a message: Dialog</p>
+<p>Show Loading icon : Loading</p>
+<p>Deal with runtime: Runtime  </p>
+
+<a href="#reference-api-for-themes" id="reference-api-for-themes" style="color: inherit; text-decoration: none;">
+  <h3>Reference API for Themes</h3>
+</a>
+<p>Register a theme : Registry</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Modules</a></li><li class=" tsd-kind-module"><a href="modules/dictionary_dictionary_interface.html">dictionary/dictionary.interface</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
