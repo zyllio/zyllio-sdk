@@ -146,13 +146,24 @@
 <pre><code class="language-typescript"><span class="hl-8">zySdk</span><span class="hl-0">.</span><span class="hl-8">services</span><span class="hl-0">.</span><span class="hl-8">runtime</span><span class="hl-0">.</span><span class="hl-9">triggerTransition</span><span class="hl-0">(</span><span class="hl-8">element</span><span class="hl-0">)</span>
 </code></pre>
 
+<a href="#access-property-values" id="access-property-values" style="color: inherit; text-decoration: none;">
+  <h2>Access property values</h2>
+</a>
+<p>A component or an action may need to access the property values. For instance, a component may need to get the Table assigned by the Zyllio Studio user</p>
+<ul>
+<li>Component: use <code>zySdk.services.factory</code> to retrieve property values</li>
+<li>Actions: use <code>properties</code> argument passed to execute method</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-1">// Action use case</span><br/><span class="hl-6">const</span><span class="hl-0"> </span><span class="hl-10">propertyValue</span><span class="hl-0"> = </span><span class="hl-8">properties</span><span class="hl-0">.</span><span class="hl-9">find</span><span class="hl-0">(</span><span class="hl-8">p</span><span class="hl-0"> </span><span class="hl-6">=&gt;</span><span class="hl-0"> </span><span class="hl-8">p</span><span class="hl-0">.</span><span class="hl-8">id</span><span class="hl-0"> === </span><span class="hl-5">&#39;table&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Component use case</span><br/><span class="hl-6">const</span><span class="hl-0"> </span><span class="hl-10">propertyValue</span><span class="hl-0"> = </span><span class="hl-8">zySdk</span><span class="hl-0">.</span><span class="hl-8">services</span><span class="hl-0">.</span><span class="hl-8">factory</span><span class="hl-0">.</span><span class="hl-9">getPropertyValue</span><span class="hl-0">(</span><span class="hl-6">this</span><span class="hl-0">, </span><span class="hl-5">&#39;table&#39;</span><span class="hl-0">)</span><br/><br/><span class="hl-1">// Cast the property accordingly, here it is a Table property value</span><br/><span class="hl-6">const</span><span class="hl-0"> </span><span class="hl-10">tableId</span><span class="hl-0"> = (</span><span class="hl-8">propertyValue</span><span class="hl-0"> </span><span class="hl-11">as</span><span class="hl-0"> </span><span class="hl-7">TablePropertyValueModel</span><span class="hl-0">).</span><span class="hl-8">tableId</span><br/>
+</code></pre>
+
 <a href="#access-data" id="access-data" style="color: inherit; text-decoration: none;">
   <h2>Access data</h2>
 </a>
 <p>A mobile appliction uses data to hold user selections accross the screen flow. For example, a product item could be selected or a phone number could be enterered</p>
 <p>Accessing data is supported by 2 services</p>
 <ul>
-<li><code>zySdk.services.factory</code> to retrieve component properties</li>
+<li><code>zySdk.services.factory</code> to retrieve property values</li>
 <li><code>zySdk.services.dictionary</code> to read / write / monitor data</li>
 </ul>
 

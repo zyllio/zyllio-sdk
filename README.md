@@ -227,13 +227,32 @@ Triggers the flow transition defined by the Zyllio Studio user
 zySdk.services.runtime.triggerTransition(element)
 ```
 
+## Access property values
+
+A component or an action may need to access the property values. For instance, a component may need to get the Table assigned by the Zyllio Studio user
+
+- Component: use `zySdk.services.factory` to retrieve property values
+- Actions: use `properties` argument passed to execute method
+
+```typescript
+// Action use case
+const propertyValue = properties.find(p => p.id === 'table')
+
+// Component use case
+const propertyValue = zySdk.services.factory.getPropertyValue(this, 'table')
+
+// Cast the property accordingly, here it is a Table property value
+const tableId = (propertyValue as TablePropertyValueModel).tableId
+
+```
+
 ## Access data
 
 A mobile appliction uses data to hold user selections accross the screen flow. For example, a product item could be selected or a phone number could be enterered
 
 Accessing data is supported by 2 services
 
-- `zySdk.services.factory` to retrieve component properties
+- `zySdk.services.factory` to retrieve property values
 - `zySdk.services.dictionary` to read / write / monitor data
 
 ### Read data
