@@ -15,8 +15,9 @@ These following tools are recommended: <a href="https://code.visualstudio.com/" 
 ## Install Zyllio SDK
 
 To install Zyllio SDK run the command
-
-`npm install @zyllio/zy-sdk -save-dev` 
+```Shell
+npm install @zyllio/zy-sdk -save-dev
+```
 
 ## Use Zyllio SDK
 
@@ -56,7 +57,13 @@ zySdk.services.registry.registerComponent(MyComponentMetadata, MyComponent)
 
 ## Component Metadata
 
-Component Metadata is a static Javascript object that describes the component, it is required by Zyllio Studio to display its properties and styles from Design Editor. This file is compliant to these specifications
+Component Metadata is a static Javascript object that describes the component, it is required by Zyllio Studio to display its properties and styles from Design Editor. 
+
+Click here to see component configuration panels
+- [Properties Panel](./images/properties.png)
+- [Styles Panel](./images/styles.png)
+
+This file is compliant to these specifications
 
 ```javascript
 {
@@ -83,9 +90,6 @@ Component Metadata is a static Javascript object that describes the component, i
     default: '360px' /* Default value if any, it is assigned at component creation by Zyllio Studio user */
   }
 ```
-
-<img title="Properties Panel" src="./images/properties.png" width="200" />
-<img title="Styles Panel" src="./images/styles.png" width="200" />
 
 ## Registering Actions
 
