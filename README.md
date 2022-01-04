@@ -1,8 +1,8 @@
-# ZYLLIO SDK
+# ZYLLIO SDK User guide
 
 Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating Plugins. These plugins contain Components, Actions and Themes
 
-- Components are Visible Components set in screens like Texts, Lists, Buttons, ...
+- Components are Visual Components set in screens like Texts, Lists, Buttons, ...
 - Actions are pieces of logic executed when the mobile app. user presses a button
 - Themes are shade of colors to customize the appearance of screens across the whole mobile app
 
@@ -45,7 +45,7 @@ All services are available from the `zySdk.services` namespace. For instance, di
 
 ## Registering Components
 
-Zyllio Components have to implement a CustomElement (WebComponent), any Javascript could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (+ reactive elements)...
+Zyllio Components have to implement a CustomElement from [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard. Any Javascript could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (+ reactive elements)...
 
 Please refer to GitHub examples to review components made with different technologies
 
@@ -84,22 +84,23 @@ const MyComponentMetadata = {
   id: 'basic-list', /* Unique identifier, must be lower case and contain a dash character */
   icon: Icon, /* SVG icon displayed in Zyllio Studio  */
   label: 'List', /* Label displayed in Zyllio Studio  */
-  category: 'Basics', /* Category in which the component is displayed in Zyllio Studio  */
-  subCategory: 'List', /* Sub category in which the component is displayed in Zyllio Studio  */
+  category: 'Basics', /* Category in which the component is displayed in Zyllio Studio */
+  subCategory: 'List', /* Sub category in which the component is displayed in Zyllio Studio */
   hidden: false, /* Should be false */
   keepRatio: false, /* Indicates whether this component require a fixed size ratio */
   properties: [{ /* Properties to configure the component */
     id: 'name', /* Unique id of the property, should be lower case */
     name: 'Name', /* Name of the property displayed in Zyllio Studio  */
     type: PropertyTypes.RowVariable, /* Type of the property from PropertyTypes enum (see Reference API) */
+    options: [], /* Array of possible options, used only when type is PropertyTypes.Options */
     tootip: '', /* Tooltip displayed in Zyllio Studio  */
     default: '', /* Default value if any, it is assigned at component creation by Zyllio Studio user */
     write: true, /* Indicates whether this property is used to save data at runtime (likely when a component allows selections or inputs) */
     main: true /* Indicates whether this property is the main one, Zyllio Studio needs it to populate the component panel. One main property must be defined */
   },
   styles: [{ /* Styles to configure the component (width and height styles are mandatory) */
-    id: 'width', /* Unique name of the style, should be lower case */
-    name: 'Width', /* Name of the style displayed in Zyllio Studio  */
+    id: 'width', /* Unique id of the style, should be lower case */
+    name: 'Width', /* Name of the style displayed in Zyllio Studio */
     type: 'width', /* Any of the folowing: width, height, background-image, background-color, icon, size, font-size, color, font-weight,  font-style, border-width, border-color, border-radius, box-shadow */
     default: '360px' /* Default value if any, it is assigned at component creation by Zyllio Studio user */
   }
@@ -117,12 +118,15 @@ class MyAction implements ActionInterface {
     ...
   }
 }
+
 ```
 
 To register an action to Zyllio platform, use `zySdk.services.registry` service 
 
 ```typescript
-zySdk.services.registry.registerAction(MyActionMetadata, MyAction)
+const myActionInstance = new MyAction()
+
+zySdk.services.registry.registerAction(MyActionMetadata, myActionInstance)
 ```
 
 ## Action Metadata
@@ -138,14 +142,15 @@ const Icon = `
 
 const MyActionMetadata = {
   id: 'get-random-meme', /* Unique identifier, must be lower case */
-  icon: Icon, /* SVG icon displayed in Zyllio Studio  */
-  label: 'Get random meme', /* Label displayed in Zyllio Studio  */
+  icon: Icon, /* SVG icon displayed in Zyllio Studio */
+  label: 'Get random meme', /* Label displayed in Zyllio Studio */
   category: 'Memes', /* Category in which the action is displayed in Zyllio Studio  */
   properties: [{ /* Properties to configure the action */
     id: 'value', /* Unique id of the property, should be lower case */
     name: 'Meme URL', /* Label displayed in Zyllio Studio  */
     type: PropertyTypes.RowVariable, /* Type of the property from PropertyTypes enum (see Reference API) */
-    tootip: `The meme image`, /* Tooltip displayed in Zyllio Studio  */
+    options: [], /* Array of possible options, used only when type is PropertyTypes.Options */
+    tootip: `The meme image`, /* Tooltip displayed in Zyllio Studio */
     default: '', /* Default value if any, it is assigned at component creation by Zyllio Studio user */
     main: true, /* Indicates whether this property is the main one */
     write: true /* Indicates whether this property is used to save data at runtime (likely when a component allows selections or inputs) */
@@ -161,10 +166,10 @@ A theme is defined as per these specifications
 
 ```typescript
 const theme = {
-  name: 'MyTheme', /* Label displayed in Zyllio Studio  */
+  name: 'MyTheme', /* Name displayed in Zyllio Studio  */
   theme: {
     primaryColor: '#4f7d96', /* Background color used in primary components (header, footer) */
-    primaryTextColor: '#ffffff', /* Background color used in primary components (header, footer) */
+    primaryTextColor: '#ffffff', /* Text color used in primary components (header, footer) */
     secondaryColor: '#fe844b', /* Background color used in secondary components (button, list, carousel) */
     secondaryTextColor: '#ffffff', /* Text color used in secondary components (button, list, carousel) */
     backgroundColor: '#f0f6f9', /* Screen background color */
