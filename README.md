@@ -1,6 +1,10 @@
 # ZYLLIO SDK
 
-Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating  Plugins. These plugins define Components, Actions and Themes
+Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating Plugins. These plugins contain Components, Actions and Themes
+
+- Components are Visible Components set in screens like Texts, Lists, Buttons, ...
+- Actions are pieces of logic executed when the mobile app. user presses a button
+- Themes are shade of colors to customize the appearance of screens across the whole mobile app
 
 It is the decision of developer to define the granularity of a plugin, it may contain any number of Components, Actions and Themes altogether 
 
@@ -14,14 +18,14 @@ These following tools are recommended: <a href="https://code.visualstudio.com/" 
 
 ## Install Zyllio SDK
 
-To install Zyllio SDK run the command
+To install Zyllio SDK run the folowing command
 ```Shell
-npm install @zyllio/zy-sdk -save-dev
+npm install @zyllio/zy-sdk --save-dev
 ```
 
 ## Use Zyllio SDK
 
-Zyllio SDK is a Typescript Library meant to be consumed from a Typescript project. Using Typescript is the recommended approach even though it is not mandatory
+Zyllio SDK is a Typescript Library meant to be consumed from a Typescript project. Using Typescript is the recommended approach even though it is not mandatory and could be used from pure Javascript projects
 
 To use Zyllio SDK, add this statement at the top of your index file
 
@@ -29,13 +33,13 @@ To use Zyllio SDK, add this statement at the top of your index file
 /// <reference types="@zyllio/zy-sdk" />
 ```
 
-This statement allows the development tool to understand the services exposed by Zyllio SDK and thus provide completion and inline documentation
+This statement allows the development tool to discover the services exposed by Zyllio SDK and thus provide completion and inline documentation
 
 > Warning: Zyllio SDK does not need to be imported using ES6 Imports. If so, it would likely introduce instabilities and loss of data onmobile devices 
 
 # Reference API
 
-All services are available from the zySdk.services namespace. For instance, dictionary service is accessed through this namespace: `zySdk.services.dictionary`
+All services are available from the `zySdk.services` namespace. For instance, dictionary service is accessed through this namespace: `zySdk.services.dictionary`
 
 >This document is an overview of the reference API, please consider the comprehensive Reference API for more information <a href="https://zyllio.github.io/zyllio-sdk/" target="_blank">Zyllio SDK Reference API</a> 
 
@@ -43,15 +47,19 @@ All services are available from the zySdk.services namespace. For instance, dict
 
 Zyllio Components have to implement a CustomElement (WebComponent), any Javascript could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (+ reactive elements)...
 
-```javascript 
+Please refer to GitHub examples to review components made with different technologies
+
+Here is fairly simple example based on Pure Javascript
+
+```typescript 
 class MyComponent extends HTMLElement {
   ...
 }
 ``` 
 
-In addition, a Metadata which describe the component to Zyllio platform is required, see below for more details. To register a component and its metadata use the following API assuming MyComponentMetadata is a JSON object and MyComponent a custome element Class
+In addition, a Metadata is required to describe the component to Zyllio platform, see below for more details. To register a component and its metadata use the following API assuming MyComponentMetadata is a JSON object and MyComponent a custom element Class
 
-```javascript
+```typescript
 zySdk.services.registry.registerComponent(MyComponentMetadata, MyComponent)
 ```
 
@@ -63,12 +71,18 @@ Click here to see component configuration panels
 - [Properties Panel](./images/properties.png)
 - [Styles Panel](./images/styles.png)
 
-This file is compliant to these specifications
+This metadata is compliant to these specifications
 
-```javascript
-{
+```typescript
+const Icon = `
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="#cccccc" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+  </svg>
+`
+
+const MyComponentMetadata = {
   id: 'basic-list', /* Unique identifier, must be lower case and contain a dash character */
-  icon: `<svg xmlns="http://www.w3.org/2000/svg" version...`, /* SVG icon displayed in Zyllio Studio  */
+  icon: Icon, /* SVG icon displayed in Zyllio Studio  */
   label: 'List', /* Label displayed in Zyllio Studio  */
   category: 'Basics', /* Category in which the component is displayed in Zyllio Studio  */
   subCategory: 'List', /* Sub category in which the component is displayed in Zyllio Studio  */
@@ -93,11 +107,11 @@ This file is compliant to these specifications
 
 ## Registering Actions
 
-An action is a process executed by the mobile user most of the time when a component is pressed
+An action is a piece of logic executed by the mobile app. most of the time when a component is pressed
 
 An Action is a Typescript class that implements `ActionInterface` and implement an `execute` method as per this example
 
-```javascript
+```typescript
 class MyAction implements ActionInterface {
   async execute(properties: PropertyModel[]) {
     ...
@@ -107,20 +121,26 @@ class MyAction implements ActionInterface {
 
 To register an action to Zyllio platform, use `zySdk.services.registry` service 
 
-```javascript
+```typescript
 zySdk.services.registry.registerAction(MyActionMetadata, MyAction)
 ```
 
 ## Action Metadata
 
-Action Metadata is a static Javascript object that describes the action, it is required by Zyllio Studio to display its properties from the Action Editor. This file is compliant to these specifications
+Action Metadata is a static Javascript object that describes the action, it is required by Zyllio Studio to display its properties from the Action Editor. This metadata is compliant to these specifications
 
-```javascript
-{
+```typescript
+const Icon = `
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="0 0 24 24">
+    <path fill="#cccccc" d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
+  </svg>
+`
+
+const MyActionMetadata = {
   id: 'get-random-meme', /* Unique identifier, must be lower case */
-  icon: `<svg xmlns="http://www.w3.org/2000/svg" version...`, /* SVG icon displayed in Zyllio Studio  */
+  icon: Icon, /* SVG icon displayed in Zyllio Studio  */
   label: 'Get random meme', /* Label displayed in Zyllio Studio  */
-  category: 'Memes', /* Category in which the component is displayed in Zyllio Studio  */
+  category: 'Memes', /* Category in which the action is displayed in Zyllio Studio  */
   properties: [{ /* Properties to configure the action */
     id: 'value', /* Unique id of the property, should be lower case */
     name: 'Meme URL', /* Label displayed in Zyllio Studio  */
@@ -135,11 +155,11 @@ Action Metadata is a static Javascript object that describes the action, it is r
 
 ## Registering Themes
 
-A theme is a set of colors to change the overall mobile app. appearance across all screens
+Themes are shade of colors to customize the appearance of screens across the whole mobile app
 
-A theme is defined as per this specifications
+A theme is defined as per these specifications
 
-```javascript
+```typescript
 const theme = {
   name: 'MyTheme', /* Label displayed in Zyllio Studio  */
   theme: {
@@ -149,13 +169,13 @@ const theme = {
     secondaryTextColor: '#ffffff', /* Text color used in secondary components (button, list, carousel) */
     backgroundColor: '#f0f6f9', /* Screen background color */
     textColor: '#474f5b', /* Text color */
-    rtl: false
+    rtl: false /* Indicates whether Right To Left alignment should be activated mainly to support Arabic and Asian languages */
   }
 }
 ```
 To register a new Theme, use `zySdk.services.registry` service 
 
-```javascript
+```typescript
 zySdk.services.registry.registerPredefinedTheme(theme)
 ```
 
@@ -165,37 +185,37 @@ Component and Actions may need to interact with application runtime using `zySdk
 
 ### Trigger screen transition
 
-```javascript
+```typescript
 zySdk.services.runtime.navigate(screen)
 ```
 
-### Get application model
+### Get application definition
 
-```javascript
+```typescript
 const application = zySdk.services.runtime.getApplication()
 ```
 
 ### Reset application 
 
-```javascript
+```typescript
 zySdk.services.runtime.reset()
 ```
 
 ### Navigate to specific screen 
 
-```javascript
+```typescript
 zySdk.services.runtime.navigate(screen)
 ```
 
 ### Navigate back 
 
-```javascript
+```typescript
 zySdk.services.runtime.back()
 ```
 
 ### Get current screen
 
-```javascript
+```typescript
 const screenId = zySdk.services.runtime.getCurrentScreenId()
 ```
 
@@ -203,7 +223,7 @@ const screenId = zySdk.services.runtime.getCurrentScreenId()
 
 Triggers the flow transition defined by the Zyllio Studio user  
 
-```javascript
+```typescript
 zySdk.services.runtime.triggerTransition(element)
 ```
 
@@ -213,12 +233,16 @@ A mobile appliction uses data to hold user selections accross the screen flow. F
 
 Accessing data is supported by 2 services
 
-`zySdk.services.factory` to retrieve component properties
-`zySdk.services.dictionary` to read / write / monitor data
+- `zySdk.services.factory` to retrieve component properties
+- `zySdk.services.dictionary` to read / write / monitor data
 
 ### Read data
 
-```javascript
+```typescript
+// Action use case
+const propertyValue = properties.find(p => p.id === 'value')
+
+// Component use case
 const propertyValue = zySdk.services.factory.getPropertyValue(this, 'value')
 
 const value = zySdk.services.dictionary.getValue(propertyValue)
@@ -226,7 +250,11 @@ const value = zySdk.services.dictionary.getValue(propertyValue)
 
 ### Write data
 
-```javascript
+```typescript
+// Action use case
+const propertyValue = properties.find(p => p.id === 'value')
+
+// Component use case
 const propertyValue = zySdk.services.factory.getPropertyValue(this, 'value')
 
 zySdk.services.dictionary.setValue(propertyValue, newValue)
@@ -236,43 +264,47 @@ zySdk.services.dictionary.setValue(propertyValue, newValue)
 
 The intent is to get a notification when a data has changed likely from another component or action
 
-```javascript
+```typescript
+// Action use case
+const propertyValue = properties.find(p => p.id === 'value')
+
+// Component use case
 const propertyValue = zySdk.services.factory.getPropertyValue(this, 'value')
 
 zySdk.services.dictionary.onChange(propertyValue, () => {
-  this.refresh()
+  // Code that updates the component
 })
 ```
 
 ## Access Zyllio database 
 
-A component has access to Zyllio database, made of tables, through the `zySdk.services.storage` service
+A component has access to Zyllio database, made of tables, through the `zySdk.services.storage` service. This is an overview, please refer to <a href="https://zyllio.github.io/zyllio-sdk/" target="_blank">Zyllio SDK Reference API</a> for more details
 
 ### To insert a data row 
-```
-zySdk.services.storage.createRow(tableId: string, data: TableRowModel): Promise<void>
+```typescript
+await zySdk.services.storage.createRow(tableId, data)
 ```
 
 ### To update a data row
-```
-zySdk.services.storage.updateRow(tableId: string, rowId: string, data: TableRowModel): Promise<void>
+```typescript
+await zySdk.services.storage.updateRow(tableId, rowId, data)
 ```
 
 ### To retrieve data rows
-```
-zySdk.services.storage.retrieveRows(tableId: string, query?: any): Promise<TableRowsModel>
+```typescript
+const rows = zySdk.services.storage.retrieveRows(tableId)
 ```
 
 ### To delete a data row
-```
-zySdk.services.storage.deleteRow(tableId: string, rowId: string): Promise<void>
+```typescript
+await zySdk.services.storage.deleteRow(tableId, rowId)
 ```
 
 ## Display a messagebox
 
 To inform a user, a component or action could display a message box using `zySdk.services.dialog` service
 
-```
+```typescript
 zySdk.services.dialog.show({
   text: `Field Email is invalid`,
   title: 'Error'
@@ -281,9 +313,9 @@ zySdk.services.dialog.show({
 
 ## Display a loading icon 
 
-To inform a user of a long process like retrieving remote data, a component or an action could use `zySdk.services.loading` service 
+To inform a user a long process is happening like retrieving remote data, a component or an action could use `zySdk.services.loading` service 
 
-```javascript
+```typescript
 zySdk.services.loading.show()
 
 // Doing long process
