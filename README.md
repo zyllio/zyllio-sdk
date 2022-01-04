@@ -323,3 +323,11 @@ zySdk.services.loading.show()
 zySdk.services.loading.hide()
 ```
 
+# Support
+
+Zyllio team is available for any support, feature requests and questions
+
+- email: contact@zyllio.com
+- twitter: [@zyllio](https://twitter.com/zyllio)
+
+
