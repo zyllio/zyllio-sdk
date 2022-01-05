@@ -45,7 +45,7 @@ All services are available from the `zySdk.services` namespace. For instance, di
 
 ## Registering Components
 
-Zyllio Components have to implement a CustomElement from [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard. Any Javascript could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (+ reactive elements)...
+Zyllio Components have to implement a CustomElement from [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard. Any Javascript frameworks could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (+ react-to-webcomponent)...
 
 Please refer to GitHub examples to review components made with different technologies
 
@@ -181,7 +181,7 @@ const theme = {
 To register a new Theme, use `zySdk.services.registry` service 
 
 ```typescript
-zySdk.services.registry.registerPredefinedTheme(theme)
+zySdk.services.registry.registerTheme(theme)
 ```
 
 ## Access application runtime 
@@ -192,12 +192,6 @@ Component and Actions may need to interact with application runtime using `zySdk
 
 ```typescript
 zySdk.services.runtime.navigate(screen)
-```
-
-### Get application definition
-
-```typescript
-const application = zySdk.services.runtime.getApplication()
 ```
 
 ### Reset application 
@@ -236,7 +230,7 @@ zySdk.services.runtime.triggerTransition(element)
 
 A component or an action may need to access the property values. For instance, a component may need to get the Table assigned by the Zyllio Studio user
 
-- Component: use `zySdk.services.factory` to retrieve property values
+- Component: use `zySdk.services.component` to retrieve property values
 - Actions: use `properties` argument passed to execute method
 
 ```typescript
@@ -244,7 +238,7 @@ A component or an action may need to access the property values. For instance, a
 const propertyValue = properties.find(p => p.id === 'table')
 
 // Component use case
-const propertyValue = zySdk.services.factory.getPropertyValue(this, 'table')
+const propertyValue = zySdk.services.component.getPropertyValue(this, 'table')
 
 // Cast the property accordingly, here it is a Table property value
 const tableId = (propertyValue as TablePropertyValueModel).tableId
@@ -257,7 +251,7 @@ A mobile appliction uses data to hold user selections accross the screen flow. F
 
 Accessing data is supported by 2 services
 
-- `zySdk.services.factory` to retrieve property values
+- `zySdk.services.component` to retrieve property values
 - `zySdk.services.dictionary` to read / write / monitor data
 
 ### Read data
@@ -267,7 +261,7 @@ Accessing data is supported by 2 services
 const propertyValue = properties.find(p => p.id === 'value')
 
 // Component use case
-const propertyValue = zySdk.services.factory.getPropertyValue(this, 'value')
+const propertyValue = zySdk.services.component.getPropertyValue(this, 'value')
 
 const value = zySdk.services.dictionary.getValue(propertyValue)
 ```
@@ -279,7 +273,7 @@ const value = zySdk.services.dictionary.getValue(propertyValue)
 const propertyValue = properties.find(p => p.id === 'value')
 
 // Component use case
-const propertyValue = zySdk.services.factory.getPropertyValue(this, 'value')
+const propertyValue = zySdk.services.component.getPropertyValue(this, 'value')
 
 zySdk.services.dictionary.setValue(propertyValue, newValue)
 ```
@@ -293,7 +287,7 @@ The intent is to get a notification when a data has changed likely from another 
 const propertyValue = properties.find(p => p.id === 'value')
 
 // Component use case
-const propertyValue = zySdk.services.factory.getPropertyValue(this, 'value')
+const propertyValue = zySdk.services.component.getPropertyValue(this, 'value')
 
 zySdk.services.dictionary.onChange(propertyValue, () => {
   // Code that updates the component
