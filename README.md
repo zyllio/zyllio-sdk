@@ -8,6 +8,16 @@ Zyllio SDK is a development kit that allows developers to extend Zyllio Studio b
 
 It is the decision of developer to define the granularity of a plugin, it may contain any number of Components, Actions and Themes altogether 
 
+# Examples
+
+| Example | GitHub Repository  | Description |
+| ------- | --- | --- | 
+| Progress Bar | https://github.com/zyllio/zyllio-plugin-progressbar | This Zyllio plugin is a Component that displays a progression bar | 
+| Meme Generator | https://github.com/zyllio/zyllio-plugin-meme-generator | This Zyllio plugin implements an Action that retrieves Memes from this Meme API
+| Ionic Slider | https://github.com/zyllio/zyllio-plugin-ionic-slider | This Zyllio plugin is a Component that embeds an Ionic component Ionic Slider |
+| Theme | https://github.com/zyllio/zyllio-plugin-theme | This Zyllio plugin implements a Theme
+| Rating | https://github.com/zyllio/zyllio-plugin-rating | This Zyllio plugin implements a simple Rating Component
+
 # Development environment
 
 Zyllio SDK requires Node.js 14+ installed on any operating system it runs
