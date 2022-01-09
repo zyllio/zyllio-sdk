@@ -19,6 +19,7 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Rating Component | https://zyllio.github.io/zyllio-plugin-rating/src/rating.js |
 | ReactJS Chart Component | https://zyllio.github.io/zyllio-plugin-reactjs/build/static/js/plugin.js | 
 | VueJS Counter Component | https://zyllio.github.io/zyllio-plugin-vuejs/dist/js/app.js | 
+| Angular Counter Component | https://github.com/zyllio/zyllio-plugin-angular |
 | Meme Generator Action | https://zyllio.github.io/zyllio-plugin-meme-generator/src/meme.js | 
 | Custom Theme | https://zyllio.github.io/zyllio-plugin-theme/src/theme.js | 
 
@@ -32,6 +33,8 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Rating Component | https://github.com/zyllio/zyllio-plugin-rating |
 | ReactJS Chart Component | https://github.com/zyllio/zyllio-plugin-reactjs | 
 | VueJS Counter Component | https://github.com/zyllio/zyllio-plugin-rating | 
+| Angular Counter Component | https://zyllio.github.io/zyllio-plugin-angular/dist/plugin.js |
+
 | Meme Generator Action | https://github.com/zyllio/zyllio-plugin-meme-generator | 
 | Custom Theme | https://github.com/zyllio/zyllio-plugin-theme | 
 
