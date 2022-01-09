@@ -8,15 +8,36 @@ Zyllio SDK is a development kit that allows developers to extend Zyllio Studio b
 
 It is the decision of developer to define the granularity of a plugin, it may contain any number of Components, Actions and Themes altogether 
 
-# Examples
+# Experiment
 
-| Example | GitHub Repository  | Description |
-| ------- | --- | --- | 
-| Progress Bar | https://github.com/zyllio/zyllio-plugin-progressbar | This Zyllio plugin is a Component that displays a progression bar | 
-| Meme Generator | https://github.com/zyllio/zyllio-plugin-meme-generator | This Zyllio plugin implements an Action that retrieves Memes from this Meme API
-| Ionic Slider | https://github.com/zyllio/zyllio-plugin-ionic-slider | This Zyllio plugin is a Component that embeds an Ionic component Ionic Slider |
-| Theme | https://github.com/zyllio/zyllio-plugin-theme | This Zyllio plugin implements a Theme
-| Rating | https://github.com/zyllio/zyllio-plugin-rating | This Zyllio plugin implements a simple Rating Component
+Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
+
+| Plugin | Plugin URL |
+| ------- | --- |
+| Progress Bar Component | https://zyllio.github.io/zyllio-plugin-progressbar/dist/plugin.js |
+| Ionic Slider Component | https://zyllio.github.io/zyllio-plugin-ionic-slider/dist/plugin.js | 
+| Rating Component | https://zyllio.github.io/zyllio-plugin-rating/src/rating.js |
+| ReactJS Chart Component | https://zyllio.github.io/zyllio-plugin-reactjs/build/static/js/plugin.js | 
+| VueJS Counter Component | https://zyllio.github.io/zyllio-plugin-vuejs/dist/js/app.js | 
+| Meme Generator Action | https://zyllio.github.io/zyllio-plugin-meme-generator/src/meme.js | 
+| Custom Theme | https://zyllio.github.io/zyllio-plugin-theme/src/theme.js | 
+
+
+# Plugin repositories
+
+| Plugin | GitHub Repository |
+| ------- | --- |
+| Progress Bar Component | https://github.com/zyllio/zyllio-plugin-progressbar |
+| Ionic Slider Component | https://github.com/zyllio/zyllio-plugin-ionic-slider | 
+| Rating Component | https://github.com/zyllio/zyllio-plugin-rating |
+| ReactJS Chart Component | https://github.com/zyllio/zyllio-plugin-reactjs | 
+| VueJS Counter Component | https://github.com/zyllio/zyllio-plugin-rating | 
+| Meme Generator Action | https://github.com/zyllio/zyllio-plugin-meme-generator | 
+| Custom Theme | https://github.com/zyllio/zyllio-plugin-theme | 
+
+# Experiment examples
+
+
 
 # Development environment
 
