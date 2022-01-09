@@ -35,10 +35,6 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Meme Generator Action | https://github.com/zyllio/zyllio-plugin-meme-generator | 
 | Custom Theme | https://github.com/zyllio/zyllio-plugin-theme | 
 
-# Experiment examples
-
-
-
 # Development environment
 
 Zyllio SDK requires Node.js 14+ installed on any operating system it runs
