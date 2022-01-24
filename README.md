@@ -1,4 +1,4 @@
-# ZYLLIO SDK User guide
+# ZYLLIO Plugin Development guide
 
 Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating Plugins. These plugins contain Components, Actions and Themes
 
@@ -34,7 +34,6 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | ReactJS Chart Component | https://github.com/zyllio/zyllio-plugin-reactjs | 
 | VueJS Counter Component | https://github.com/zyllio/zyllio-plugin-rating | 
 | Angular Counter Component | https://zyllio.github.io/zyllio-plugin-angular/dist/plugin.js |
-
 | Meme Generator Action | https://github.com/zyllio/zyllio-plugin-meme-generator | 
 | Custom Theme | https://github.com/zyllio/zyllio-plugin-theme | 
 
