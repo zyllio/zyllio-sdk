@@ -1,12 +1,13 @@
 # ZYLLIO Plugin Development guide
 
-Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating Plugins. These plugins contain Components, Actions and Themes
+Zyllio SDK is a development kit that allows developers to extend Zyllio Studio by creating Plugins. These plugins contain Components, Actions, Formula functions and Themes
 
 - Components are Visual Components set in screens like Texts, Lists, Buttons, ...
 - Actions are pieces of logic executed when the mobile app. user presses a button
+- Formula functions are piece of presentation to display complex data (math, substring, unit convertion, distance calculation...)
 - Themes are shade of colors to customize the appearance of screens across the whole mobile app
 
-It is the decision of developer to define the granularity of a plugin, it may contain any number of Components, Actions and Themes altogether 
+It is the decision of developer to define the granularity of a plugin, it may contain any number of Components, Actions, Functions and Themes altogether 
 
 # Experiment
 
@@ -39,7 +40,7 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 
 # Development environment
 
-Zyllio SDK requires Node.js 14+ installed on any operating system it runs
+Zyllio SDK requires Node.js 16+ installed on any operating system it runs
 
 Zyllio team recommends development tools that support Javascript, Typescript technical stack
 
@@ -74,7 +75,7 @@ All services are available from the `zySdk.services` namespace. For instance, di
 
 ## Registering Components
 
-Zyllio Components have to implement a CustomElement from [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard. Any Javascript frameworks could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (+ react-to-webcomponent)...
+Zyllio Components have to implement a CustomElement from [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standard. Any Javascript frameworks could be used to develop this custom element: Pure JS, Angular, Vue.Js, StencilJS, ReactJS (using react-to-webcomponent)...
 
 Please refer to GitHub examples to review components made with different technologies
 
@@ -110,17 +111,16 @@ const Icon = `
 `
 
 const MyComponentMetadata = {
-  id: 'basic-list', /* Unique identifier, must be lower case and contain a dash character */
+  id: 'zyllio-list', /* Unique identifier, must be lower case and contain a dash character */
   icon: Icon, /* SVG icon displayed in Zyllio Studio  */
   label: 'List', /* Label displayed in Zyllio Studio  */
   category: 'Basics', /* Category in which the component is displayed in Zyllio Studio */
   subCategory: 'List', /* Sub category in which the component is displayed in Zyllio Studio */
   hidden: false, /* Should be false */
-  keepRatio: false, /* Indicates whether this component require a fixed size ratio */
   properties: [{ /* Properties to configure the component */
     id: 'name', /* Unique id of the property, should be lower case */
     name: 'Name', /* Name of the property displayed in Zyllio Studio  */
-    type: PropertyTypes.RowVariable, /* Type of the property from PropertyTypes enum (see Reference API) */
+    type: 'row-variable', /* Type of the property (see Reference API) */
     options: [], /* Array of possible options, used only when type is PropertyTypes.Options */
     tootip: '', /* Tooltip displayed in Zyllio Studio  */
     default: '', /* Default value if any, it is assigned at component creation by Zyllio Studio user */
@@ -139,7 +139,7 @@ const MyComponentMetadata = {
 
 An action is a piece of logic executed by the mobile app. most of the time when a component is pressed
 
-An Action is a Typescript class that implements `ActionInterface` and implement an `execute` method as per this example
+An Action is a Typescript class that implements `ActionInterface` and implements an `execute` method as per this example
 
 ```typescript
 class MyAction implements ActionInterface {
@@ -177,12 +177,62 @@ const MyActionMetadata = {
   properties: [{ /* Properties to configure the action */
     id: 'value', /* Unique id of the property, should be lower case */
     name: 'Meme URL', /* Label displayed in Zyllio Studio  */
-    type: PropertyTypes.RowVariable, /* Type of the property from PropertyTypes enum (see Reference API) */
+    type: 'row-variable', /* Type of the property from PropertyTypes enum (see Reference API) */
     options: [], /* Array of possible options, used only when type is PropertyTypes.Options */
     tootip: `The meme image`, /* Tooltip displayed in Zyllio Studio */
     default: '', /* Default value if any, it is assigned at component creation by Zyllio Studio user */
     main: true, /* Indicates whether this property is the main one */
     write: true /* Indicates whether this property is used to save data at runtime (likely when a component allows selections or inputs) */
+  }]
+}
+```
+
+## Registering Formula functions
+
+Formula functions are piece of presentation to display complex data (math, substring, unit convertion, distance calculation)
+
+A Function is a Typescript class that implements `FunctionInterface` and implement an `execute` method as per this example
+
+```typescript
+class MyFunction implements FunctionInterface {
+  execute(properties: PropertyModel[]) {
+    ...
+  }
+}
+
+```
+
+To register a Formula function to Zyllio platform, use `zySdk.services.registry` service 
+
+```typescript
+const myFunctionInstance = new Myfunction()
+
+zySdk.services.registry.registerFunction(MyFunctionMetadata, myFunctionInstance)
+```
+
+## Formula Function Metadata
+
+Function Metadata is a static Javascript object that describes the function, it is required by Zyllio Studio to display its properties from the Formula Editor. This metadata is compliant to these specifications
+
+```typescript
+const IconData = `
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="0 0 24 24" fill="#cccccc">
+    <path d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V8H19V19Z" />
+  </svg>
+`
+
+const DateTimeMetadata = {
+  id: 'date', /* Unique identifier, must be lower case */
+  icon: IconData, /* SVG icon displayed in Zyllio Studio */
+  label: 'New date & time', /* Label displayed in Zyllio Studio */
+  category: 'Date', /* Category in which the function is displayed in Zyllio Studio  */
+  properties: [{ /* Properties to configure the function */
+    id: 'date', /* Unique id of the property, should be lower case */
+    name: 'Date', /* Label displayed in Zyllio Studio  */
+    type: 'date', /* Type of the property (see Reference API) */
+    tootip: `The date displayed`, /* Tooltip displayed in Zyllio Studio */
+    default: '', /* Default value if any, it is assigned at component creation by Zyllio Studio user */
+    main: true, /* Indicates whether this property is the main one */
   }]
 }
 ```
@@ -201,6 +251,8 @@ const theme = {
     primaryTextColor: '#ffffff', /* Text color used in primary components (header, footer) */
     secondaryColor: '#fe844b', /* Background color used in secondary components (button, list, carousel) */
     secondaryTextColor: '#ffffff', /* Text color used in secondary components (button, list, carousel) */
+    tertiaryColor: '#0000000a', /* Background color used in tertiary components (input fields) */  
+    tertiaryTextColor: '#000000', /* Text color used in tertiary components (input fields) */
     backgroundColor: '#f0f6f9', /* Screen background color */
     textColor: '#474f5b', /* Text color */
     rtl: false /* Indicates whether Right To Left alignment should be activated mainly to support Arabic and Asian languages */
@@ -274,16 +326,16 @@ const tableId = (propertyValue as TablePropertyValueModel).tableId
 
 ```
 
-## Access data
+## Access data dictionary
 
 A mobile appliction uses data to hold user selections accross the screen flow. For example, a product item could be selected or a phone number could be enterered
 
 Accessing data is supported by 2 services
 
 - `zySdk.services.component` to retrieve property values
-- `zySdk.services.dictionary` to read / write / monitor data
+- `zySdk.services.dictionary` to read / write / monitor data dictionary
 
-### Read data
+### Read data dictionary
 
 ```typescript
 // Action use case
@@ -295,7 +347,7 @@ const propertyValue = zySdk.services.component.getPropertyValue(this, 'value')
 const value = zySdk.services.dictionary.getValue(propertyValue)
 ```
 
-### Write data
+### Write data dictionary
 
 ```typescript
 // Action use case
@@ -307,7 +359,7 @@ const propertyValue = zySdk.services.component.getPropertyValue(this, 'value')
 zySdk.services.dictionary.setValue(propertyValue, newValue)
 ```
 
-### Monitor data changes
+### Monitor data dictionary changes
 
 The intent is to get a notification when a data has changed likely from another component or action
 
@@ -338,8 +390,21 @@ await zySdk.services.storage.updateRow(tableId, rowId, data)
 ```
 
 ### To retrieve data rows
+
+Method1 High level API : This convenient API supports tables, relations, filters and sorts
+
 ```typescript
-const rows = zySdk.services.storage.retrieveRows(tableId)
+
+const list: ListItemsModel = await zySdk.services.component.retrieveData(element, 'table')
+
+```
+
+Method2 Low level API : This API returns raw data not filtered and sorted. Relation table needs to be solved before using it 
+
+```typescript
+
+const rows: TableRowsModel = zySdk.services.storage.retrieveRows(tableId)
+
 ```
 
 ### To delete a data row
