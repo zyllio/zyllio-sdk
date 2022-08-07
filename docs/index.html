@@ -206,6 +206,23 @@
 <pre><code class="language-typescript"><span class="hl-8">zySdk</span><span class="hl-0">.</span><span class="hl-8">services</span><span class="hl-0">.</span><span class="hl-8">registry</span><span class="hl-0">.</span><span class="hl-9">registerTheme</span><span class="hl-0">(</span><span class="hl-8">theme</span><span class="hl-0">)</span>
 </code></pre>
 
+<a href="#use-theme-from-visual-components" id="use-theme-from-visual-components" style="color: inherit; text-decoration: none;">
+  <h2>Use theme from Visual components</h2>
+</a>
+<p>Visual components could make use of theme style properties using the following CSS variables</p>
+<p>These variables are set at body level automatically by Zyllio SDK at startup</p>
+<ul>
+<li>--primary-color : Background color used in primary components (header, footer) </li>
+<li>--primary-text-color: Text color used in primary components (header, footer) </li>
+<li>--secondary-color: Background color used in secondary components (button, list, carousel)</li>
+<li>--secondary-text-color: Text color used in secondary components (button, list, carousel) </li>
+<li>--tertiary-color: Background color used in tertiary components (input fields) </li>
+<li>--tertiary-text-color: Text color used in tertiary components (input fields) </li>
+<li>--background-color: Screen background color</li>
+<li>--text-color: Text color</li>
+<li>--direction: Indicates whether Right To Left alignment should be activated to support Arabic and Asian languages</li>
+</ul>
+
 <a href="#access-application-runtime" id="access-application-runtime" style="color: inherit; text-decoration: none;">
   <h2>Access application runtime</h2>
 </a>
@@ -308,10 +325,10 @@
 <a href="#to-retrieve-data-rows" id="to-retrieve-data-rows" style="color: inherit; text-decoration: none;">
   <h3>To retrieve data rows</h3>
 </a>
-<p>Method1 High level API : This convenient API supports tables, relations, filters and sorts</p>
+<p>Method 1 High level API : This convenient API supports tables, relations, filters and sorts</p>
 <pre><code class="language-typescript"><br/><span class="hl-6">const</span><span class="hl-0"> </span><span class="hl-10">list</span><span class="hl-0">: </span><span class="hl-7">ListItemsModel</span><span class="hl-0"> = </span><span class="hl-11">await</span><span class="hl-0"> </span><span class="hl-8">zySdk</span><span class="hl-0">.</span><span class="hl-8">services</span><span class="hl-0">.</span><span class="hl-8">component</span><span class="hl-0">.</span><span class="hl-9">retrieveData</span><span class="hl-0">(</span><span class="hl-8">element</span><span class="hl-0">, </span><span class="hl-5">&#39;table&#39;</span><span class="hl-0">)</span><br/>
 </code></pre>
-<p>Method2 Low level API : This API returns raw data not filtered and sorted. Relation table needs to be solved before using it </p>
+<p>Method 2 Low level API : This API returns raw data not filtered and sorted. Relation table needs to be solved before using it </p>
 <pre><code class="language-typescript"><br/><span class="hl-6">const</span><span class="hl-0"> </span><span class="hl-10">rows</span><span class="hl-0">: </span><span class="hl-7">TableRowsModel</span><span class="hl-0"> = </span><span class="hl-8">zySdk</span><span class="hl-0">.</span><span class="hl-8">services</span><span class="hl-0">.</span><span class="hl-8">storage</span><span class="hl-0">.</span><span class="hl-9">retrieveRows</span><span class="hl-0">(</span><span class="hl-8">tableId</span><span class="hl-0">)</span><br/>
 </code></pre>
 

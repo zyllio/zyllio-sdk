@@ -265,6 +265,24 @@ To register a new Theme, use `zySdk.services.registry` service
 zySdk.services.registry.registerTheme(theme)
 ```
 
+## Use theme from Visual components
+
+Visual components could make use of theme style properties using the following CSS variables
+
+These variables are set at body level automatically by Zyllio SDK at startup
+
+- --primary-color : Background color used in primary components (header, footer) 
+- --primary-text-color: Text color used in primary components (header, footer) 
+- --secondary-color: Background color used in secondary components (button, list, carousel)
+- --secondary-text-color: Text color used in secondary components (button, list, carousel) 
+- --tertiary-color: Background color used in tertiary components (input fields) 
+- --tertiary-text-color: Text color used in tertiary components (input fields) 
+- --background-color: Screen background color
+- --text-color: Text color
+- --direction: Indicates whether Right To Left alignment should be activated to support Arabic and Asian languages
+
+
+
 ## Access application runtime 
 
 Component and Actions may need to interact with application runtime using `zySdk.services.runtime` service 
@@ -391,7 +409,7 @@ await zySdk.services.storage.updateRow(tableId, rowId, data)
 
 ### To retrieve data rows
 
-Method1 High level API : This convenient API supports tables, relations, filters and sorts
+Method 1 High level API : This convenient API supports tables, relations, filters and sorts
 
 ```typescript
 
@@ -399,7 +417,7 @@ const list: ListItemsModel = await zySdk.services.component.retrieveData(element
 
 ```
 
-Method2 Low level API : This API returns raw data not filtered and sorted. Relation table needs to be solved before using it 
+Method 2 Low level API : This API returns raw data not filtered and sorted. Relation table needs to be solved before using it 
 
 ```typescript
 
@@ -408,7 +426,7 @@ const rows: TableRowsModel = zySdk.services.storage.retrieveRows(tableId)
 ```
 
 ### To delete a data row
-```typescript
+```typescript     
 await zySdk.services.storage.deleteRow(tableId, rowId)
 ```
 
