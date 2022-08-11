@@ -19,7 +19,7 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Ionic Slider Component | https://zyllio.github.io/zyllio-plugin-ionic-slider/dist/plugin.js | 
 | Rating Component | https://zyllio.github.io/zyllio-plugin-rating/src/rating.js |
 | Angular Counter Component | https://zyllio.github.io/zyllio-plugin-angular/dist/plugin.js |
-| ReactJS Chart Component | https://zyllio.github.io/zyllio-plugin-reactjs/build/static/js/plugin.js | 
+| ReactJS Chart Component | https://zyllio.github.io/zyllio-plugin-reactjs/dist/plugin.js | 
 | VueJS Counter Component | https://zyllio.github.io/zyllio-plugin-vuejs/dist/js/app.js | 
 | Meme Generator Action | https://zyllio.github.io/zyllio-plugin-meme-generator/src/meme.js | 
 | Custom Theme | https://zyllio.github.io/zyllio-plugin-theme/src/theme.js | 
