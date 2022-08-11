@@ -18,9 +18,9 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Progress Bar Component | https://zyllio.github.io/zyllio-plugin-progressbar/dist/plugin.js |
 | Ionic Slider Component | https://zyllio.github.io/zyllio-plugin-ionic-slider/dist/plugin.js | 
 | Rating Component | https://zyllio.github.io/zyllio-plugin-rating/src/rating.js |
+| Angular Counter Component | https://zyllio.github.io/zyllio-plugin-angular/dist/plugin.js |
 | ReactJS Chart Component | https://zyllio.github.io/zyllio-plugin-reactjs/build/static/js/plugin.js | 
 | VueJS Counter Component | https://zyllio.github.io/zyllio-plugin-vuejs/dist/js/app.js | 
-| Angular Counter Component | https://github.com/zyllio/zyllio-plugin-angular/dist/plugin.js |
 | Meme Generator Action | https://zyllio.github.io/zyllio-plugin-meme-generator/src/meme.js | 
 | Custom Theme | https://zyllio.github.io/zyllio-plugin-theme/src/theme.js | 
 
@@ -32,9 +32,9 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Progress Bar Component | https://github.com/zyllio/zyllio-plugin-progressbar |
 | Ionic Slider Component | https://github.com/zyllio/zyllio-plugin-ionic-slider | 
 | Rating Component | https://github.com/zyllio/zyllio-plugin-rating |
+| Angular Counter Component | https://github.com/zyllio/zyllio-plugin-angular |
 | ReactJS Chart Component | https://github.com/zyllio/zyllio-plugin-reactjs | 
 | VueJS Counter Component | https://github.com/zyllio/zyllio-plugin-rating | 
-| Angular Counter Component | https://zyllio.github.io/zyllio-plugin-angular |
 | Meme Generator Action | https://github.com/zyllio/zyllio-plugin-meme-generator | 
 | Custom Theme | https://github.com/zyllio/zyllio-plugin-theme | 
 
@@ -280,6 +280,8 @@ These variables are set at body level automatically by Zyllio SDK at startup
 - --background-color: Screen background color
 - --text-color: Text color
 - --direction: Indicates whether Right To Left alignment should be activated to support Arabic and Asian languages
+
+
 
 ## Access application runtime 
 
