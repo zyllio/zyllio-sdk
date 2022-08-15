@@ -271,14 +271,14 @@ Visual components could make use of theme style properties using the following C
 
 These variables are set at body level automatically by Zyllio SDK at startup
 
-- --primary-color : Background color used in primary components (header, footer) 
-- --primary-text-color: Text color used in primary components (header, footer) 
-- --secondary-color: Background color used in secondary components (button, list, carousel)
-- --secondary-text-color: Text color used in secondary components (button, list, carousel) 
-- --tertiary-color: Background color used in tertiary components (input fields) 
-- --tertiary-text-color: Text color used in tertiary components (input fields) 
-- --background-color: Screen background color
-- --text-color: Text color
+- --theme-primary-color : Background color used in primary components (header, footer) 
+- --theme-primary-text-color: Text color used in primary components (header, footer) 
+- --theme-secondary-color: Background color used in secondary components (button, list, carousel)
+- --theme-secondary-text-color: Text color used in secondary components (button, list, carousel) 
+- --theme-tertiary-color: Background color used in tertiary components (input fields) 
+- --theme-tertiary-text-color: Text color used in tertiary components (input fields) 
+- --theme-background-color: Screen background color
+- --theme-text-color: Text color
 - --direction: Indicates whether Right To Left alignment should be activated to support Arabic and Asian languages
 
 
