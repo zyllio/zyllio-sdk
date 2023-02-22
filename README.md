@@ -115,7 +115,7 @@ const MyComponentMetadata = {
   icon: Icon, /* SVG icon displayed in Zyllio Studio  */
   label: 'List', /* Label displayed in Zyllio Studio  */
   category: 'Basics', /* Category in which the component is displayed in Zyllio Studio */
-  subCategory: 'List', /* Sub category in which the component is displayed in Zyllio Studio */
+  subCategory: 'Lists', /* Sub category in which the component is displayed in Zyllio Studio */
   hidden: false, /* Should be false */
   properties: [{ /* Properties to configure the component */
     id: 'name', /* Unique id of the property, should be lower case */
