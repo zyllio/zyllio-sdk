@@ -65,8 +65,6 @@ To use Zyllio SDK, add this statement at the top of your index file
 
 This statement allows the development tool to discover the services exposed by Zyllio SDK and thus provide completion and inline documentation
 
-> Warning: Zyllio SDK does not need to be imported using ES6 Imports. If so, it would likely introduce instabilities and loss of data onmobile devices 
-
 # Reference API
 
 All services are available from the `zySdk.services` namespace. For instance, dictionary service is accessed through this namespace: `zySdk.services.dictionary`
