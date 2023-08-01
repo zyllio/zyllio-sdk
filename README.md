@@ -411,7 +411,7 @@ Method 1 High level API : This convenient API supports tables, relations, filter
 
 ```typescript
 
-const list: ListItemsModel = await zySdk.services.component.retrieveData(element, 'table')
+const list: ListItemsModel = await zySdk.services.list.retrieveData(propertyValue)
 
 ```
 
