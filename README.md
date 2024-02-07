@@ -18,7 +18,7 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Progress Bar Component | https://zyllio.github.io/zyllio-plugin-progressbar/dist/plugin.js |
 | Ionic Slider Component | https://zyllio.github.io/zyllio-plugin-ionic-slider/dist/plugin.js | 
 | Rating Component | https://zyllio.github.io/zyllio-plugin-rating/src/rating.js |
-| Angular Counter Component | https://zyllio.github.io/zyllio-plugin-angular/dist/plugin.js |
+| Angular Timeline Component | https://zyllio.github.io/zyllio-plugin-angular/dist/plugin.js |
 | ReactJS Chart Component | https://zyllio.github.io/zyllio-plugin-reactjs/dist/plugin.js | 
 | VueJS Counter Component | https://zyllio.github.io/zyllio-plugin-vuejs/dist/js/app.js | 
 | Meme Generator Action | https://zyllio.github.io/zyllio-plugin-meme-generator/src/meme.js | 
@@ -32,7 +32,7 @@ Use these pre-built plugins to experiment Zyllio Plugins within Zyllio Studio
 | Progress Bar Component | https://github.com/zyllio/zyllio-plugin-progressbar |
 | Ionic Slider Component | https://github.com/zyllio/zyllio-plugin-ionic-slider | 
 | Rating Component | https://github.com/zyllio/zyllio-plugin-rating |
-| Angular Counter Component | https://github.com/zyllio/zyllio-plugin-angular |
+| Angular Timeline Component | https://github.com/zyllio/zyllio-plugin-angular |
 | ReactJS Chart Component | https://github.com/zyllio/zyllio-plugin-reactjs | 
 | VueJS Counter Component | https://github.com/zyllio/zyllio-plugin-rating | 
 | Meme Generator Action | https://github.com/zyllio/zyllio-plugin-meme-generator | 
@@ -109,7 +109,8 @@ const Icon = `
 `
 
 const MyComponentMetadata = {
-  id: 'zyllio-list', /* Unique identifier, must be lower case and contain a dash character */
+  metadataVersion: 2, /* Must be version 2 */
+  id: 'zyllio-list', /* Unique identifier, must be lower case and contain a dash character */  
   icon: Icon, /* SVG icon displayed in Zyllio Studio  */
   label: 'List', /* Label displayed in Zyllio Studio  */
   category: 'Basics', /* Category in which the component is displayed in Zyllio Studio */
@@ -124,13 +125,13 @@ const MyComponentMetadata = {
     default: '', /* Default value if any, it is assigned at component creation by Zyllio Studio user */
     write: true, /* Indicates whether this property is used to save data at runtime (likely when a component allows selections or inputs) */
     main: true /* Indicates whether this property is the main one, Zyllio Studio needs it to populate the component panel. One main property must be defined */
-  },
+  }],
   styles: [{ /* Styles to configure the component (width and height styles are mandatory) */
     id: 'width', /* Unique id of the style, should be lower case */
     name: 'Width', /* Name of the style displayed in Zyllio Studio */
     type: 'width', /* Any of the folowing: width, height, background-image, background-color, icon, size, font-size, color, font-weight,  font-style, border-width, border-color, border-radius, box-shadow */
     default: '360px' /* Default value if any, it is assigned at component creation by Zyllio Studio user */
-  }
+  }]
 ```
 
 ## Registering Actions
